@@ -14,11 +14,11 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    @Value("${JWT_SECRET:3cF8kP2mNqRtZvXwYhJdLbUgAeOiSuWnTjByCpDkMvQrHfGlEs7a9x1z4n6o0p}")
+private String secret;
 
-    @Value("${jwt.expiration}")
-    private long expiration;
+@Value("${jwt.expiration:86400000}")
+private long expiration;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());

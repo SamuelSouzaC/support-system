@@ -21,9 +21,9 @@ Sistema web para gerenciamento de chamados de suporte técnico, com autenticaç�
 |-------|-------|
 | Email | admin@suporte.com |
 | Senha | admin123 |
-| Perfil | ADMIN |
-
+| Perfil | ADMIN  |
 ---
+Link de acesso ao sistema: https://frontend-lovat-pi-36.vercel.app
 
 ## 🏗️ Tecnologias
 

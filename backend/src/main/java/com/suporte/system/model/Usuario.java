@@ -1,5 +1,6 @@
 package com.suporte.system.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -12,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,7 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String senha;
 
@@ -36,9 +37,11 @@ public class Usuario {
     @Column(name = "criado_em")
     private LocalDateTime criadoEm;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "analista")
     private List<Chamado> chamadosAtribuidos;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "abertoPor")
     private List<Chamado> chamadosAbertos;
 

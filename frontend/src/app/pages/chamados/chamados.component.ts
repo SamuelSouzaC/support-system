@@ -17,10 +17,15 @@ import { Projeto } from '../../models/projeto.model';
       <div class="form-group"><label>Título</label><input [(ngModel)]="form.titulo"></div>
       <div class="form-group"><label>Descrição</label><textarea [(ngModel)]="form.descricao" rows="3"></textarea></div>
       <div class="form-group"><label>Prioridade</label>
-        <select [(ngModel)]="form.prioridade"><option value="BAIXA">Baixa</option><option value="MEDIA">Média</option><option value="ALTA">Alta</option><option value="CRITICA">Crítica</option></select>
+        <select [(ngModel)]="form.prioridade">
+          <option value="BAIXA">Baixa</option><option value="MEDIA">Média</option>
+          <option value="ALTA">Alta</option><option value="CRITICA">Crítica</option>
+        </select>
       </div>
       <div class="form-group"><label>Projeto</label>
-        <select [(ngModel)]="form.projetoId"><option *ngFor="let p of projetos" [value]="p.id">{{p.nome}}</option></select>
+        <select [(ngModel)]="form.projetoId">
+          <option *ngFor="let p of projetos" [value]="p.id">{{p.nome}}</option>
+        </select>
       </div>
       <button class="btn btn-primary" (click)="criar()">Salvar</button>
     </div>
@@ -33,7 +38,10 @@ import { Projeto } from '../../models/projeto.model';
             <td><span class="badge" [class]="'badge-'+c.status.toLowerCase()">{{c.status}}</span></td>
             <td><span class="badge" [class]="'badge-'+c.prioridade.toLowerCase()">{{c.prioridade}}</span></td>
             <td>{{c.abertoEm | date:'dd/MM/yyyy'}}</td>
-            <td><button class="btn btn-sm" (click)="fechar(c)">Fechar</button></td>
+            <td>
+              <button *ngIf="c.status !== 'FECHADO'" class="btn btn-sm" (click)="fechar(c)">Fechar</button>
+              <span *ngIf="c.status === 'FECHADO'" style="color:#aaa;font-size:12px">—</span>
+            </td>
           </tr>
         </tbody>
       </table>
